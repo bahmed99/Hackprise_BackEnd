@@ -1,4 +1,3 @@
-const { array } = require('joi');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -76,29 +75,5 @@ const registerSchema = new Schema({
 
 
 
-const register = mongoose.model('Inscription', registerSchema);
+const register = mongoose.model('Inscription_Hackathon_Infor', registerSchema);
 module.exports = register
-
-//     {
-//         nom2: String ,
-//         prenom2:String ,
-//         email2:String 
-//     },
-//     {
-//         nom3: String ,
-//         prenom3:String ,
-//         email3:String 
-//     },
-//     {
-//         nom4: String ,
-//         prenom4:String ,
-//         email4:String ,
-        
-//     },
-//     {
-//         nom5: String ,
-//         prenom5:String ,
-//         email5:String ,
-        
-//     }
-// ]

@@ -14,7 +14,9 @@ app.use(cors())
 
 app.use(morgan('tiny'))
 
-app.use("/register", require("./router/register"))
+app.use("/hackathonStb", require("./routes/register/hackathonStb"))
+app.use("/hackathonInfor", require("./routes/register/hackathonInfor"))
+app.use("/event", require("./routes/register/event"))
 
 const mongoose = require("mongoose")
 
