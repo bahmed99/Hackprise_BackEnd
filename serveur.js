@@ -17,7 +17,8 @@ app.use(morgan('tiny'))
 app.use("/hackathonStb", require("./routes/register/hackathonStb"))
 app.use("/hackathonInfor", require("./routes/register/hackathonInfor"))
 app.use("/event", require("./routes/register/event"))
-
+app.use("/exposition", require("./routes/exposition/exposition"))
+app.use("/count", require("./routes/counter/counter"))
 const mongoose = require("mongoose")
 
 const mongoURI = "mongodb+srv://first:first@cluster.6keue.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
@@ -30,3 +31,4 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).
 ).catch(err => {
     console.log("error")
 })
+
