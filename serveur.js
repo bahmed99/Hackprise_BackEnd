@@ -19,6 +19,9 @@ app.use("/hackathonInfor", require("./routes/register/hackathonInfor"))
 app.use("/event", require("./routes/register/event"))
 app.use("/exposition", require("./routes/exposition/exposition"))
 app.use("/count", require("./routes/counter/counter"))
+app.use("/blogs",require("./routes//blog/blog"))
+app.use("/participants", require("./routes/participants/participants"))
+
 const mongoose = require("mongoose")
 
 const mongoURI = "mongodb+srv://first:first@cluster.6keue.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"

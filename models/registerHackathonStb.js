@@ -106,6 +106,11 @@ const registerSchema = new Schema({
         type:String
     
     },
+    
+    done :{
+        type : Boolean,
+        default:false 
+    },
     accord:{
         type : Boolean,
     }

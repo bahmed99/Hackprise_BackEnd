@@ -108,6 +108,10 @@ const registerSchema = new Schema({
     Etablissement4:{
         type:String 
     },
+    done :{
+        type : Boolean,
+        default:false 
+    },
     accord:{
         type : Boolean,
     }
