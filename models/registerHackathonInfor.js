@@ -20,10 +20,26 @@ const registerSchema = new Schema({
         type:String,
         required: true 
     },
+    Etablissement:{
+        type:String,
+        required: true 
+    },
+    NomEquipe:{
+        type:String ,
+        required: true 
+    },
+    
+    SelectEnLigne:{
+        type:String
+    },
     nom1: {
         type: String,
         required: true 
         
+    },
+    email1 :{
+        type: String,
+        required: true 
     },
     tel1:{
         type: String,
@@ -33,10 +49,19 @@ const registerSchema = new Schema({
         type:String,
         required: true 
     },
+    
+    Etablissement1:{
+        type:String,
+        required: true 
+    },
     nom2: {
         type: String,
         required: true 
         
+    },
+    email2 :{
+        type: String,
+        required: true 
     },
     tel2:{
         type: String,
@@ -46,10 +71,15 @@ const registerSchema = new Schema({
         type:String,
         required: true 
     },
+    Etablissement2:{
+        type:String,
+        required: true 
+    },
     nom3: {
         type: String
-        
-        
+    },
+    email3 :{
+        type: String
     },
     tel3:{
         type: String
@@ -58,15 +88,25 @@ const registerSchema = new Schema({
     profession3:{
         type:String
     },
+    Etablissement3:{
+        type:String
+    },
     nom4: {
         type: String
         
+    },
+    email4 :{
+        type: String
+    
     },
     tel4:{
         type: String 
     },
     profession4:{
         type:String
+    },
+    Etablissement4:{
+        type:String 
     },
     accord:{
         type : Boolean,
