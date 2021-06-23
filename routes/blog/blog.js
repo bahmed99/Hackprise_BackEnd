@@ -3,7 +3,7 @@ const router = express.Router()
 const Blog = require("../../models/blog");
 const multer = require('multer');
 
-
+router.use(express.json());
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, '../client/public/uploads');
@@ -21,6 +21,7 @@ const upload = multer({
 
 router.get("/:id", (req, res) => {
     const blog_id = req.params.id
+    
     Blog.findById(blog_id).then((blog) => {
         res.json(blog)
     }).catch(err => {
@@ -44,8 +45,6 @@ router.post("/", upload.single('image'), (req, res) => {
         content: req.body.content,
         writer: req.body.writer,
         image: req.file.originalname
-
-
     })
     newBlog.save().then((result) => {
         console.log(result)
