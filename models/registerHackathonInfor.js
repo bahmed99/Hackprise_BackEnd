@@ -28,92 +28,34 @@ const registerSchema = new Schema({
         type:String ,
         required: true 
     },
-    
     SelectEnLigne:{
-        type:String
-    },
-    nom1: {
-        type: String,
-        required: true 
-        
-    },
-    email1 :{
-        type: String,
-        required: true 
-    },
-    tel1:{
-        type: String,
-        required: true 
-    },
-    profession1:{
         type:String,
         required: true 
+    },
+    accord :{
+        type:Boolean
+
+    },
+    nom1: {
+        type: String 
+    },
+    email1 :{
+        type: String
+    },
+    tel1:{
+        type: String
+    },
+    profession1:{
+        type:String
     },
     
     Etablissement1:{
-        type:String,
-        required: true 
-    },
-    nom2: {
-        type: String,
-        required: true 
-        
-    },
-    email2 :{
-        type: String,
-        required: true 
-    },
-    tel2:{
-        type: String,
-        required: true 
-    },
-    profession2:{
-        type:String,
-        required: true 
-    },
-    Etablissement2:{
-        type:String,
-        required: true 
-    },
-    nom3: {
-        type: String
-    },
-    email3 :{
-        type: String
-    },
-    tel3:{
-        type: String
-       
-    },
-    profession3:{
         type:String
-    },
-    Etablissement3:{
-        type:String
-    },
-    nom4: {
-        type: String
-        
-    },
-    email4 :{
-        type: String
     
     },
-    tel4:{
-        type: String 
-    },
-    profession4:{
-        type:String
-    },
-    Etablissement4:{
-        type:String 
-    },
-    done :{
+    done:{
         type : Boolean,
         default:false 
-    },
-    accord:{
-        type : Boolean,
     }
 }, { timestamps: true })
 

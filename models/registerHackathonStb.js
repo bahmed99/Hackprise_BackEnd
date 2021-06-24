@@ -53,25 +53,21 @@ const registerSchema = new Schema({
         required: true 
     },
     nom2: {
-        type: String,
-        required: true 
+        type: String
+        
         
     },
     email2 :{
-        type: String,
-        required: true 
+        type: String
     },
     tel2:{
-        type: String,
-        required: true 
+        type: String
     },
     profession2:{
-        type:String,
-        required: true 
+        type:String
     },
     Etablissement2:{
-        type:String,
-        required: true 
+        type:String
     },
     nom3: {
         type: String
@@ -81,7 +77,6 @@ const registerSchema = new Schema({
     },
     tel3:{
         type: String
-       
     },
     profession3:{
         type:String
@@ -89,30 +84,9 @@ const registerSchema = new Schema({
     Etablissement3:{
         type:String
     },
-    nom4: {
-        type: String
-        
-    },
-    email4 :{
-        type: String
-    },
-    tel4:{
-        type: String 
-    },
-    profession4:{
-        type:String
-    },
-    Etablissement4:{
-        type:String
-    
-    },
-    
-    done :{
+    done:{
         type : Boolean,
         default:false 
-    },
-    accord:{
-        type : Boolean,
     }
 }, { timestamps: true })
 
