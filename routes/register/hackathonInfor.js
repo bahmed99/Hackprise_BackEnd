@@ -13,13 +13,17 @@ const storage = multer.diskStorage({
         cb(null, './CV');
     },
     filename: function (req, file, cb) {
-        cb(null, req.body.nom + '-' + file.originalname);
+        cb(null, req.body.NomEquipe + '-' + file.originalname);
+        console.log(req.body.NomEquipe)
     }
 });
 
 const upload = multer({
   storage: storage,
 })
+
+const multipleUpload = upload.fields([{name:"file"},{name:"file1"}])
+
 
 
 const path = require('path');
@@ -48,7 +52,7 @@ transporter.use(
   hbs(handlebarOptions)
 );
 
-router.post('/register', upload.single('file'),(req, res) => {
+router.post('/register', multipleUpload,(req, res) => {
 
   let data = req.body;
  
@@ -61,6 +65,12 @@ router.post('/register', upload.single('file'),(req, res) => {
       
       if (!savedUser) {
         
+        if(req.file){
+
+          fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
+
+        }
+
         const participant = new Register({
           nom: data.nom,
           email: data.email,
@@ -130,6 +140,12 @@ router.post('/register', upload.single('file'),(req, res) => {
     .then((savedUser) => {
       
       if (!savedUser) {
+
+        if(req.file){
+
+          fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
+          console.log(req.file.path)
+        }
         const participant = new Register({
           nom: data.nom,
           email: data.email,

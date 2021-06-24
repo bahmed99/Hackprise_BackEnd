@@ -38,6 +38,8 @@ router.post('/register', (req, res) => {
 
   if (!isEmpty(data.email3) && !isEmpty(data.email2)) {
 
+    console.log(data)
+
     Register.findOne({ $or: [{ email: data.email }, { email: data.email1 }, { email: data.email2 }, { email: data.email3 }, { email1: data.email1 }, { email1: data.email }, { email1: data.email2 }, { email1: data.email3 }, { email2: data.email2 }, { email2: data.email }, { email2: data.email1 }, { email2: data.email3 }, { email3: data.email3 }, { email3: data.email }, { email3: data.email2 }, { email3: data.email1 }] })
       .then((savedUser) => {
 
