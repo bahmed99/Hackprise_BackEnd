@@ -10,15 +10,15 @@ const HackathonStb = require("../../models/registerHackathonStb")
 const Event = require("../../models/registerEvent")
 
 router.get('/', (req, res) => {
-    Exposition.countDocuments().then((count1) => {
-        HackathonInfor.countDocuments().then((count2) => {
-            HackathonStb.countDocuments().then((count3) => {
-                Event.countDocuments().then((count4) => {
-                    res.send(JSON.stringify({ "countExposition": count1, "countHackathon": count2 + count3, "countEvent": count4 })  ) 
-                });
+    
+        HackathonInfor.countDocuments().then((count1) => {
+            HackathonStb.countDocuments().then((count2) => {
+                
+                    res.send(JSON.stringify({ "infor": count1, "stb": count2 })  ) 
+                
             });
         });
-    });
+  
 })
 
 

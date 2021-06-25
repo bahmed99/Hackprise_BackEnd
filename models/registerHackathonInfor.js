@@ -28,6 +28,12 @@ const registerSchema = new Schema({
         type:String ,
         required: true 
     },
+    
+    niveau:{
+        type:String ,
+        required: true 
+    },
+
     SelectEnLigne:{
         type:String,
         required: true 
@@ -52,6 +58,9 @@ const registerSchema = new Schema({
     Etablissement1:{
         type:String
     
+    },
+    niveau1:{
+        type:String 
     },
     done:{
         type : Boolean,

@@ -78,7 +78,7 @@ router.post('/register', multipleUpload,(req, res) => {
           profession: data.profession,
           Etablissement: data.Etablissement,
           NomEquipe:data.NomEquipe,
-          
+          niveau:data.niveau,
           SelectEnLigne:data.SelectEnLigne,
           
           nom1: data.nom1,
@@ -86,7 +86,8 @@ router.post('/register', multipleUpload,(req, res) => {
           tel1: data.tel1,
           profession1: data.profession1,
           Etablissement1: data.Etablissement1,
-          accord:data.accord
+          accord:data.accord,
+          niveau1:data.niveau1
     
         })
 
@@ -154,7 +155,8 @@ router.post('/register', multipleUpload,(req, res) => {
           Etablissement: data.Etablissement,
           NomEquipe:data.NomEquipe,
           SelectEnLigne:data.SelectEnLigne,
-          accord:data.accord
+          accord:data.accord,
+          niveau:data.niveau
   
         })
 
