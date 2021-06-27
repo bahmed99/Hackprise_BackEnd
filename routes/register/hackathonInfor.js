@@ -9,20 +9,20 @@ router.use(express.json());
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './CV');
-    },
-    filename: function (req, file, cb) {
-        cb(null, req.body.NomEquipe + '-' + file.originalname);
-        console.log(req.body.NomEquipe)
-    }
+  destination: function (req, file, cb) {
+    cb(null, './CV');
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.body.NomEquipe + '-' + file.originalname);
+    console.log(req.body.NomEquipe)
+  }
 });
 
 const upload = multer({
   storage: storage,
 })
 
-const multipleUpload = upload.fields([{name:"file"},{name:"file1"}])
+const multipleUpload = upload.fields([{ name: "file" }, { name: "file1" }])
 
 
 
@@ -52,157 +52,144 @@ transporter.use(
   hbs(handlebarOptions)
 );
 
-router.post('/register', multipleUpload,(req, res) => {
+
+
+router.post('/register', multipleUpload, (req, res) => {
 
   let data = req.body;
- 
-  if(!isEmpty(data.email1))
 
-  {
- 
-    Register.findOne({$or : [{ email: data.email},{ email: data.email1},{email1:data.email1},{email1:data.email}]})
-    .then((savedUser) => {
-      
-      if (!savedUser) {
-        
-        if(req.file){
+  if (!isEmpty(data.email1)) {
 
-          fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
+    Register.findOne({ $or: [{ email: data.email }, { email: data.email1 }, { email1: data.email1 }, { email1: data.email }] })
+      .then((savedUser) => {
 
+        if (!savedUser) {
+
+          if (req.file) {
+
+            fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
+
+          }
+
+          const participant = new Register({
+            nom: data.nom,
+            email: data.email,
+            tel: data.tel,
+            profession: data.profession,
+            Etablissement: data.Etablissement,
+            NomEquipe: data.NomEquipe,
+            niveau: data.niveau,
+            SelectEnLigne: data.SelectEnLigne,
+
+            nom1: data.nom1,
+            email1: data.email1,
+            tel1: data.tel1,
+            profession1: data.profession1,
+            Etablissement1: data.Etablissement1,
+            accord: data.accord,
+            niveau1: data.niveau1
+
+          })
+
+
+          participant.save()
+            .then(user => {
+              res.status(201).send({ error: false, sent: true, msg: false })
+
+
+              var mailOptions = {
+                from: 'ahmed.bahri99@gmail.com',
+                to: `${user.email},${user.email1}`,
+                subject: '[MAIL DE CONFIRMATION]',
+                template: 'hackathonInfor'
+                ,
+              }
+
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+
+                }
+              });
+            })
+
+            .catch(err => {
+              res.status(400).send({ error: true, sent: false, msg: false })
+            })
+        }
+        else {
+          res.status(400).send({ error: true, sent: false, msg: true })
         }
 
-        const participant = new Register({
-          nom: data.nom,
-          email: data.email,
-          tel: data.tel,
-          profession: data.profession,
-          Etablissement: data.Etablissement,
-          NomEquipe:data.NomEquipe,
-          niveau:data.niveau,
-          SelectEnLigne:data.SelectEnLigne,
-          
-          nom1: data.nom1,
-          email1:data.email1,
-          tel1: data.tel1,
-          profession1: data.profession1,
-          Etablissement1: data.Etablissement1,
-          accord:data.accord,
-          niveau1:data.niveau1
-    
-        })
+      })
+      .catch(err => {
+        res.status(400).send({ error: true, sent: false, msg: false })
+      })
 
 
-        participant.save()
-          .then(user => {
-            res.status(201).send({ error: false, sent: true, msg: false })
-
-
-            var mailOptions = {
-              from: 'ahmed.bahri99@gmail.com',
-              to: user.email,
-              subject: 'Sending Email using Node.js',
-              text: `Hi Smartherd, thank you for your nice Node.js tutorials.
-                          I will donate 50$ for this course. Please send me payment options.`,
-              template: 'hackathonInfor'
-              , context: {
-                name: 'Accime Esterling'
-              }
-            }
-
-            transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log('Email sent: ' + info.response);
-              }
-            });
-
-
-
-
-          })
-          .catch(err => {
-            res.status(400).send({ error: true, sent: false, msg: false })
-          })
-      }
-      else {
-        res.status(400).send({ error: true, sent: false, msg: true })
-      }
-
-    })
-    .catch(err => {
-      res.status(400).send({ error: true, sent: false, msg: false })
-    })
-  
-  
   }
   else {
-    Register.findOne({$or : [{ email: data.email},{email1:data.email}]})
-    .then((savedUser) => {
-      
-      if (!savedUser) {
+    Register.findOne({ $or: [{ email: data.email }, { email1: data.email }] })
+      .then((savedUser) => {
 
-        if(req.file){
+        if (!savedUser) {
 
-          fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
-          console.log(req.file.path)
+          if (req.file) {
+
+            fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
+            console.log(req.file.path)
+          }
+          const participant = new Register({
+            nom: data.nom,
+            email: data.email,
+            tel: data.tel,
+            profession: data.profession,
+            Etablissement: data.Etablissement,
+            NomEquipe: data.NomEquipe,
+            SelectEnLigne: data.SelectEnLigne,
+            accord: data.accord,
+            niveau: data.niveau
+
+          })
+
+
+          participant.save()
+            .then(user => {
+              res.status(201).send({ error: false, sent: true, msg: false })
+              var mailOptions = {
+                from: 'ahmed.bahri99@gmail.com',
+                to: user.email,
+                subject: '[MAIL DE CONFIRMATION]',
+                template: 'hackathonInfor'
+                , 
+              }
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+
+
+
+
+            })
+            .catch(err => {
+              res.status(400).send({ error: true, sent: false, msg: false })
+            })
         }
-        const participant = new Register({
-          nom: data.nom,
-          email: data.email,
-          tel: data.tel,
-          profession: data.profession,
-          Etablissement: data.Etablissement,
-          NomEquipe:data.NomEquipe,
-          SelectEnLigne:data.SelectEnLigne,
-          accord:data.accord,
-          niveau:data.niveau
-  
-        })
+        else {
+          res.status(400).send({ error: true, sent: false, msg: true })
+        }
 
-
-        participant.save()
-          .then(user => {
-            res.status(201).send({ error: false, sent: true, msg: false })
-
-
-            var mailOptions = {
-              from: 'ahmed.bahri99@gmail.com',
-              to: user.email,
-              subject: 'Sending Email using Node.js',
-              text: `Hi Smartherd, thank you for your nice Node.js tutorials.
-                          I will donate 50$ for this course. Please send me payment options.`,
-              template: 'hackathonInfor'
-              , context: {
-                name: 'Accime Esterling'
-              }
-            }
-
-            transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log('Email sent: ' + info.response);
-              }
-            });
-
-
-
-
-          })
-          .catch(err => {
-            res.status(400).send({ error: true, sent: false, msg: false })
-          })
-      }
-      else {
-        res.status(400).send({ error: true, sent: false, msg: true })
-      }
-
-    })
-    .catch(err => {
-      res.status(400).send({ error: true, sent: false, msg: false })
-    })
-    }
+      })
+      .catch(err => {
+        res.status(400).send({ error: true, sent: false, msg: false })
+      })
+  }
 
 
 
@@ -211,7 +198,7 @@ router.post('/register', multipleUpload,(req, res) => {
 })
 
 function isEmpty(str) {
-  return (!str || str.length === 0 );
+  return (!str || str.length === 0);
 }
 
 module.exports = router

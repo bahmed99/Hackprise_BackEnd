@@ -81,14 +81,10 @@ router.post('/register', (req, res) => {
 
               var mailOptions = {
                 from: 'ahmed.bahri99@gmail.com',
-                to: user.email,
-                subject: '[]',
-                text: `Hi Smartherd, thank you for your nice Node.js tutorials.
-                          I will donate 50$ for this course. Please send me payment options.`,
+                to: `${user.email},${user.email1},${user.email2},${user.email3}`,
+                subject: '[MAIL DE CONFIRMATION]',
                 template: 'hackathonStb'
-                , context: {
-                  name: 'Accime Esterling'
-                }
+                , 
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -155,14 +151,10 @@ router.post('/register', (req, res) => {
 
               var mailOptions = {
                 from: 'ahmed.bahri99@gmail.com',
-                to: user.email,
-                subject: 'Sending Email using Node.js',
-                text: `Hi Smartherd, thank you for your nice Node.js tutorials.
-                            I will donate 50$ for this course. Please send me payment options.`,
+                to: `${user.email},${user.email1},${user.email2}`,
+                subject: '[MAIL DE CONFIRMATION]',
                 template: 'hackathonStb'
-                , context: {
-                  name: 'Accime Esterling'
-                }
+                , 
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -216,17 +208,12 @@ router.post('/register', (req, res) => {
             .then(user => {
               res.status(201).send({ error: false, sent: true, msg: false })
 
-
               var mailOptions = {
                 from: 'ahmed.bahri99@gmail.com',
-                to: user.email,
-                subject: 'Sending Email using Node.js',
-                text: `Hi Smartherd, thank you for your nice Node.js tutorials.
-                          I will donate 50$ for this course. Please send me payment options.`,
+                to: `${user.email},${user.email1}`,
+                subject: '[MAIL DE CONFIRMATION]',
                 template: 'hackathonStb'
-                , context: {
-                  name: 'Accime Esterling'
-                }
+                , 
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
