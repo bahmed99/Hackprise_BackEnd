@@ -84,7 +84,7 @@ router.post('/register', (req, res) => {
                 to: `${user.email},${user.email1},${user.email2},${user.email3}`,
                 subject: '[MAIL DE CONFIRMATION]',
                 template: 'hackathonStb'
-                , 
+                ,
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -154,7 +154,7 @@ router.post('/register', (req, res) => {
                 to: `${user.email},${user.email1},${user.email2}`,
                 subject: '[MAIL DE CONFIRMATION]',
                 template: 'hackathonStb'
-                , 
+                ,
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -212,10 +212,39 @@ router.post('/register', (req, res) => {
                 from: 'ahmed.bahri99@gmail.com',
                 to: `${user.email},${user.email1}`,
                 subject: '[MAIL DE CONFIRMATION]',
+                html: `<p>
+                  <h2> Cher(e) Participant(e) ,</h2>
+                </p >
+                <p>Nous vous confirmons votre inscription au <strong>Hack'prise</strong> en sa 1ère édition au Hackathom de
+                    <strong>STB</strong>.
+                </p>
+                <p> Nous vous rappelons également la tenue de l'évènement le <strong> 14 Juillet </strong> à <strong> l'Ecole
+                        Nationnal des Sciences de l'Informatique au Campus Universitaire de la Mannouba </strong> à <strong> 08:00
+                    </strong> du matin.</p>
+                <p>Pour toute information supplémentaire , veuillez visitez la page de l'évènement <a></a> ou bien contactez
+                    directement notre page <a href="https://www.facebook.com/ENSI.Junior.Entreprise/"> Facebook .</a></p>
+                <p>Dans l'attente de vous compter parmi nous,veuillez accepter l'expression de nos salutations distinguées.</p>
+            
+                <div>
+            
+                    <img src="cid:eje" width="180px">
+                    <img src="cid:stb" width="300px">
+                </div>`,
                 template: 'hackathonStb'
-                , 
+                ,
+                attachments: [
+                  {   // utf-8 string as an attachment
+                    filename: 'stb.jpg',
+                    path: __dirname + "/views/stb.jpg",
+                    cid: "stb"
+                  },
+                  {
+                    filename: 'eje.jpg',
+                    path: __dirname + "/views/eje.png",
+                    cid: "eje"
+                  }
+                ]
               }
-
               transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
                   console.log(error);
