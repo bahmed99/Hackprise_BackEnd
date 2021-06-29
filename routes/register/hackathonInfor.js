@@ -123,14 +123,14 @@ router.post('/register', multipleUpload, (req, res) => {
                 ,
                 attachments: [
                   {   // utf-8 string as an attachment
-                      filename: 'infor.jpg',
-                      path:__dirname+"/infor.jpg",
-                      cid: "infor"
+                    filename: 'infor.jpg',
+                    path: __dirname + "/infor.jpg",
+                    cid: "infor"
                   },
                   {
                     filename: 'eje.jpg',
-                      path:__dirname+"/eje.png",
-                      cid: "eje"
+                    path: __dirname + "/eje.png",
+                    cid: "eje"
                   }
                 ]
               }
@@ -199,9 +199,9 @@ router.post('/register', multipleUpload, (req, res) => {
                     <strong>Infor</strong>.
                 </p>
                 <p> Nous vous rappelons également la tenue de l'évènement le <strong> 14 Juillet </strong> à <strong> l'Ecole
-                        Nationnal des Sciences de l'Informatique au Campus Universitaire de la Mannouba </strong> à <strong> 08:00
+                        National des Sciences de l'Informatique au Campus Universitaire de la Mannouba </strong> à <strong> 08:00
                     </strong> du matin.</p>
-                <p>Pour toute information supplémentaire , veuillez visitez la page de l'évènement <a></a> ou bien contactez
+                <p>Pour toute information supplémentaire , veuillez visitez la page de <a href="https://www.facebook.com/events/457426795701123">l'évènement </a> ou bien contactez
                     directement notre page <a href="https://www.facebook.com/ENSI.Junior.Entreprise/"> Facebook .</a></p>
                 <p>Dans l'attente de vous compter parmi nous,veuillez accepter l'expression de nos salutations distinguées.</p>
             
@@ -214,18 +214,18 @@ router.post('/register', multipleUpload, (req, res) => {
                 ,
                 attachments: [
                   {   // utf-8 string as an attachment
-                      filename: 'infor.jpg',
-                      path:__dirname+"/views/infor.jpg",
-                      cid: "infor"
+                    filename: 'infor.jpg',
+                    path: __dirname + "/views/infor.jpg",
+                    cid: "infor"
                   },
                   {
                     filename: 'eje.jpg',
-                      path:__dirname+"/views/eje.png",
-                      cid: "eje"
+                    path: __dirname + "/views/eje.png",
+                    cid: "eje"
                   }
                 ]
               }
-              
+
 
               transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
@@ -252,11 +252,6 @@ router.post('/register', multipleUpload, (req, res) => {
         res.status(400).send({ error: true, sent: false, msg: false })
       })
   }
-
-
-
-
-
 })
 
 function isEmpty(str) {
