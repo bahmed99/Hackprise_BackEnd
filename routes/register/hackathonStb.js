@@ -222,7 +222,7 @@ router.post('/register', (req, res) => {
                         National des Sciences de l'Informatique au Campus Universitaire de la Mannouba </strong> à <strong> 08:00
                     </strong> du matin.</p>
                 <p>Pour toute information supplémentaire , veuillez visitez la page de <a href="https://www.facebook.com/events/457426795701123">l'évènement </a> ou bien contactez
-                    directement notre page <a href="https://www.facebook.com/ENSI.Junior.Entreprise/"> Facebook .</a></p>
+                    directement notre page <a href="https://www.facebook.com/ENSI.Junior.Entreprise/"> Facebook.</a></p>
                 <p>Dans l'attente de vous compter parmi nous,veuillez accepter l'expression de nos salutations distinguées.</p>
             
                 <div>
