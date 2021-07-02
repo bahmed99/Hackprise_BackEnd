@@ -13,8 +13,8 @@ const storage = multer.diskStorage({
     cb(null, './CV');
   },
   filename: function (req, file, cb) {
-    cb(null, req.body.NomEquipe + '-' + file.originalname);
-    console.log(req.body.NomEquipe)
+    cb(null, req.body.nom + '-' + file.originalname);
+    
   }
 });
 
@@ -64,11 +64,16 @@ router.post('/register', multipleUpload, (req, res) => {
       .then((savedUser) => {
 
         if (!savedUser) {
-
-          if (req.file) {
-
-            fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
-
+          
+          if (req.files.file) {
+          
+            fs.renameSync(req.files.file[0].path, req.files.file[0].path.replace('undefined', req.body.nom));
+         
+          }
+          if (req.files.file1) {
+          
+            fs.renameSync(req.files.file1[0].path, req.files.file1[0].path.replace('undefined', req.body.nom1));
+         
           }
 
           const participant = new Register({
@@ -165,11 +170,12 @@ router.post('/register', multipleUpload, (req, res) => {
       .then((savedUser) => {
 
         if (!savedUser) {
+          
+          if (req.files) {
+            
 
-          if (req.file) {
-
-            fs.renameSync(req.file.path, req.file.path.replace('undefined', req.body.accord + req.body.nom));
-            console.log(req.file.path)
+            fs.renameSync(req.files.file[0].path, req.files.file[0].path.replace('undefined', req.body.nom));
+         
           }
           const participant = new Register({
             nom: data.nom,
