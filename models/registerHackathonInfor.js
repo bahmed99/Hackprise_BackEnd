@@ -34,10 +34,6 @@ const registerSchema = new Schema({
         required: true 
     },
 
-    SelectEnLigne:{
-        type:String,
-        required: true 
-    },
     accord :{
         type:Boolean
 
