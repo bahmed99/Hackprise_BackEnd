@@ -33,11 +33,6 @@ const registerSchema = new Schema({
         type:String ,
         required: true 
     },
-
-    accord :{
-        type:Boolean
-
-    },
     nom1: {
         type: String 
     },
